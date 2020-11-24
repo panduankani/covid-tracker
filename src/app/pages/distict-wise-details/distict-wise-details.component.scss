@@ -1,0 +1,25 @@
+::ng-deep {
+    .mat-table {
+        .mat-sort-header {
+            &.text-right {
+                .mat-sort-header-container {
+                    justify-content: flex-end;
+                }
+            }
+        }
+
+        th.mat-header-cell {
+            text-align: left;
+            position: sticky;
+            top: 0px;
+            background: #fff;
+            box-shadow: 0 2px #eee;
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+        padding-left: 10px;
+    }
+}

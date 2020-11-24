@@ -1,0 +1,91 @@
+.mat-card {
+    padding: 0;
+    margin-bottom: 20px;
+    text-align: center;
+
+    .count, .which-count {
+        margin: 0;
+        font-weight: 500;
+    }
+    
+    .count {
+        padding: 30px;
+    }
+    
+    .which-count {
+        background-color: #ffbcbc;
+        padding: 10px;
+    }
+
+    &.confirmed {
+        .count, .which-count {
+            color: red;
+        }
+
+        .count {
+            background-color: #ffe5e5;
+        }
+
+        .which-count {
+            background-color: #ffbcbc;
+        }
+    }
+
+    &.recovered {
+        .count, .which-count {
+            color: #43a047;
+        }
+
+        .count {
+            background-color: #d1fdd3;
+        }
+
+        .which-count {
+            background-color: #a5daa9;
+        }
+    }
+
+    &.deaths {
+        .count, .which-count {
+            color: #7d7d7d;
+        }
+
+        .count {
+            background-color: #e6e6e6;
+        }
+
+        .which-count {
+            background-color: #d6d6d6;
+        }
+    }
+}
+
+::ng-deep {
+    .mat-table {
+        .mat-sort-header {
+            &.text-right {
+                .mat-sort-header-container {
+                    justify-content: flex-end;
+                }
+            }
+        }
+
+        th.mat-header-cell {
+            text-align: left;
+            position: sticky;
+            top: 0px;
+            background: #fff;
+            box-shadow: 0 2px #eee;
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+        padding-left: 10px;
+    }
+
+    .mat-card {
+        margin: 15px 15px 20px;
+    }
+}
