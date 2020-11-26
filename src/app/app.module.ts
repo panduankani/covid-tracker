@@ -10,12 +10,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DistictWiseDetailsComponent } from './pages/distict-wise-details/distict-wise-details.component';
+import { StateWiseDetailsComponent } from './pages/state-wise-details/state-wise-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    DistictWiseDetailsComponent
+    DistictWiseDetailsComponent,
+    StateWiseDetailsComponent
   ],
   imports: [
     BrowserModule,

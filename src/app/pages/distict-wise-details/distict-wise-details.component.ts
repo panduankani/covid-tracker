@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { CovidTrackerService } from 'src/app/services/covid-tracker/covid-tracker.service';
 import { CovidData } from 'src/app/models/CovidData';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-distict-wise-details',
@@ -25,15 +26,23 @@ export class DistictWiseDetailsComponent implements OnInit {
   ];
 
   @ViewChild(MatSort) sort: MatSort;
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event) {
+  }
 
-  constructor(private readonly _activatedRoute: ActivatedRoute, private readonly _router: Router, private readonly _covidTrackerSerivce: CovidTrackerService) {
+  constructor(private readonly _activatedRoute: ActivatedRoute, private readonly _router: Router, private readonly _covidTrackerSerivce: CovidTrackerService, private readonly _location: Location) {
     this._activatedRoute.params.subscribe(params => {
       this.stateId = params.stateId;
       this.getStateWiseDetails();
     });
+
+    this._router.events.subscribe(event => {
+      console.log(this._location.path());
+    });
   }
 
   ngOnInit(): void {
+    
   }
 
   /**
@@ -51,6 +60,10 @@ export class DistictWiseDetailsComponent implements OnInit {
       this.districtWiseDetails = new MatTableDataSource(stateData.districtData);
       this.districtWiseDetails.sort = this.sort;
     });
+  }
+
+  ngOnDestroy() {
+    
   }
 
 }

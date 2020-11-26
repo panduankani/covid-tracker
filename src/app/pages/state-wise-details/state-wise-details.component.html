@@ -1,0 +1,15 @@
+<table mat-table [dataSource]="stateWiseDetails" matSort style="width: 100%;" class="mat-elevation-z8">
+    <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column?.prop">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="{ 'text-right': column.prop !== 'state' }">
+            {{ column?.name }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+            <ng-container [ngSwitch]="column.prop">
+                <p class="m-0" *ngSwitchCase="'state'"><a href="javascript: void(0)" (click)="onSelectState(element.id)">{{ element[column?.prop] }}</a></p>
+                <p class="text-right pr-3 m-0" *ngSwitchDefault>{{ element[column?.prop] | number:'1.0':'en-US' }}</p>
+            </ng-container>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+</table>
